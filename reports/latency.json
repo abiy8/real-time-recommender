@@ -1,0 +1,6 @@
+{
+  "requests": 100,
+  "p50_ms": 1.1002409996763163,
+  "p95_ms": 1.592644250331432,
+  "measurement": "Sequential local in-process FastAPI TestClient requests including SQLite history lookup; not external network or concurrency load testing"
+}
