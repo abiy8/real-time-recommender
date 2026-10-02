@@ -1,0 +1,16 @@
+services:
+  train:
+    build: .
+    command: sh -c "python download_data.py && python train.py"
+    volumes: ["model-artifacts:/app/artifacts", "movie-data:/app/data"]
+  api:
+    build: .
+    depends_on:
+      train:
+        condition: service_completed_successfully
+    ports: ["127.0.0.1:8000:8000"]
+    env_file: .env
+    volumes: ["model-artifacts:/app/artifacts", "movie-data:/app/data"]
+volumes:
+  model-artifacts:
+  movie-data:
